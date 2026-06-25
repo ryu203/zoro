@@ -3,8 +3,8 @@ pipeline {
 
     stages {
         stage('clone Repository') {
-            steps {
-                git 'https://github.com/ryu203/zoro.git'
+            git branch: 'main',
+                url:'https://github.com/ryu203/zoro.git'
             }
         }
         stage('Build Docker Image') {
