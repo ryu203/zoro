@@ -12,13 +12,13 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t DockerDemo .'
+                bat 'docker build -t dockerdemo .'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 8080:80 --name DockerDemoContainer DockerDemo'
+                bat 'docker run -d -p 8080:80 --name dockerdemocontainer dockerdemo'
             }
         }
 
