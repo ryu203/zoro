@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/ryu203/zoro.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 bat 'docker build -t dockerdemo .'
@@ -18,7 +11,8 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                bat 'docker run -d -p 8080:80 --name dockerdemocontainer dockerdemo'
+                bat 'docker rm -f dockerdemocontainer || exit 0'
+                bat 'docker run -d -p 8081:80 --name dockerdemocontainer dockerdemo'
             }
         }
 
